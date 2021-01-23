@@ -43,6 +43,11 @@ class GameScene: SKScene {
     physicsWorld.contactDelegate = self
     physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
     
+    // set up and edge frame at the bottom of the frame (off-screen)
+    physicsBody = SKPhysicsBody(edgeFrom: CGPoint(x: frame.minX, y: frame.minY), to: CGPoint(x: frame.maxX, y: frame.minY))
+    physicsBody!.categoryBitMask = GameConstants.PhysicsCategories.frameCategory
+    physicsBody!.contactTestBitMask = GameConstants.PhysicsCategories.playerCategory
+    
     createLayers()
   }
   
@@ -132,10 +137,38 @@ class GameScene: SKScene {
       }
     }
   }
+  
   func brakeDescend() {
     brake = true
     player.physicsBody!.velocity.dy = 0.0
     player.run(player.userData?.value(forKey: GameConstants.StringConstants.breakDescendActionKey) as! SKAction)
+  }
+  
+  func handleEnemyContact() {
+    die(reason: 0)
+  }
+  
+  func die(reason:Int) {
+    gameState = .finished
+    player.turnGravity(on: false)
+    let deathAnimation:SKAction!
+    switch reason {
+    case 0:
+      deathAnimation = SKAction.animate(with: player.dieFrames, timePerFrame: 0.1, resize: true, restore: true)
+    case 1:
+      let up = SKAction.moveTo(y: frame.midY, duration: 0.25)
+      let wait = SKAction.wait(forDuration: 0.1)
+      let down = SKAction.moveTo(y: -player.size.height, duration: 0.2)
+      deathAnimation = SKAction.sequence([up, wait, down])
+
+    default:
+      deathAnimation = SKAction.animate(with: player.dieFrames, timePerFrame: 0.1, resize: true, restore: true)
+    }
+    
+//    player.removeAllActions()
+    player.run(deathAnimation) {
+      self.player.removeFromParent()
+    }
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -194,11 +227,25 @@ extension GameScene: SKPhysicsContactDelegate {
   func didBegin(_ contact: SKPhysicsContact) {
     let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
     switch contactMask {
+    
+    // GROUND
     case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.groundCategory:
       player.airborne = false
       brake = false
+      
+    // FINISH
     case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.finishCategory:
       gameState = .finished
+      
+    // ENEMY
+    case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.enemyCategory:
+      handleEnemyContact()
+      
+    // ENEMY
+    case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.frameCategory:
+      physicsBody = nil
+      die(reason: 1)
+      
     default:
       break
     }

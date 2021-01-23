@@ -24,8 +24,19 @@ class PhysicsHelper {
       sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
       sprite.physicsBody!.categoryBitMask = GameConstants.PhysicsCategories.finishCategory
 
+    // ENEMIES
+    case GameConstants.StringConstants.enemyName:
+      sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
+      sprite.physicsBody!.categoryBitMask = GameConstants.PhysicsCategories.enemyCategory
+
     default:
       sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
+    }
+    
+    // ALL NOT PLAYER
+    if name != GameConstants.StringConstants.playerName {
+      sprite.physicsBody!.contactTestBitMask = GameConstants.PhysicsCategories.playerCategory
+      sprite.physicsBody!.isDynamic = false // don't push me bro
     }
   }
 
