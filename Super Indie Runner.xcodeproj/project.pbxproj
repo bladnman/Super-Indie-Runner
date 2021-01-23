@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C3BABAA25BBBA4A0099A13D /* Level_0-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C3BABA925BBBA4A0099A13D /* Level_0-1.sks */; };
+		6C3BABB025BBBAE70099A13D /* TileSets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C3BABAF25BBBAE70099A13D /* TileSets.sks */; };
+		6C3BABB525BBBE240099A13D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C3BABB425BBBE240099A13D /* LaunchScreen.storyboard */; };
+		6C3BABBE25BBBEB50099A13D /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3BABBD25BBBEB50099A13D /* SKNode+Extensions.swift */; };
 		6CE126C925BBB4F300C7DA3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE126C825BBB4F300C7DA3D /* AppDelegate.swift */; };
-		6CE126CB25BBB4F300C7DA3D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6CE126CA25BBB4F300C7DA3D /* GameScene.sks */; };
-		6CE126CD25BBB4F300C7DA3D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6CE126CC25BBB4F300C7DA3D /* Actions.sks */; };
 		6CE126CF25BBB4F300C7DA3D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE126CE25BBB4F300C7DA3D /* GameScene.swift */; };
 		6CE126D125BBB4F300C7DA3D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE126D025BBB4F300C7DA3D /* GameViewController.swift */; };
 		6CE126D425BBB4F300C7DA3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CE126D225BBB4F300C7DA3D /* Main.storyboard */; };
@@ -36,10 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C3BABA925BBBA4A0099A13D /* Level_0-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level_0-1.sks"; sourceTree = "<group>"; };
+		6C3BABAF25BBBAE70099A13D /* TileSets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSets.sks; sourceTree = "<group>"; };
+		6C3BABB425BBBE240099A13D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6C3BABBD25BBBEB50099A13D /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
 		6CE126C525BBB4F300C7DA3D /* Super Indie Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Indie Runner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CE126C825BBB4F300C7DA3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6CE126CA25BBB4F300C7DA3D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		6CE126CC25BBB4F300C7DA3D /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		6CE126CE25BBB4F300C7DA3D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		6CE126D025BBB4F300C7DA3D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6CE126D325BBB4F300C7DA3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +82,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C3BABA725BBBA040099A13D /* Scene Editor Files */ = {
+			isa = PBXGroup;
+			children = (
+				6C3BABA825BBBA150099A13D /* Levels */,
+			);
+			path = "Scene Editor Files";
+			sourceTree = "<group>";
+		};
+		6C3BABA825BBBA150099A13D /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				6C3BABA925BBBA4A0099A13D /* Level_0-1.sks */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
+		6C3BABAE25BBBAC80099A13D /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				6C3BABAF25BBBAE70099A13D /* TileSets.sks */,
+			);
+			path = Tiles;
+			sourceTree = "<group>";
+		};
+		6C3BABBC25BBBE930099A13D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6C3BABBD25BBBEB50099A13D /* SKNode+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6CE126BC25BBB4F300C7DA3D = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +122,9 @@
 				6CE126EA25BBB4F400C7DA3D /* Super Indie RunnerUITests */,
 				6CE126C625BBB4F300C7DA3D /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6CE126C625BBB4F300C7DA3D /* Products */ = {
 			isa = PBXGroup;
@@ -101,14 +139,14 @@
 		6CE126C725BBB4F300C7DA3D /* Super Indie Runner */ = {
 			isa = PBXGroup;
 			children = (
-				6CE126C825BBB4F300C7DA3D /* AppDelegate.swift */,
-				6CE126CA25BBB4F300C7DA3D /* GameScene.sks */,
-				6CE126CC25BBB4F300C7DA3D /* Actions.sks */,
-				6CE126CE25BBB4F300C7DA3D /* GameScene.swift */,
-				6CE126D025BBB4F300C7DA3D /* GameViewController.swift */,
-				6CE126D225BBB4F300C7DA3D /* Main.storyboard */,
+				6C3BABBC25BBBE930099A13D /* Extensions */,
+				6C3BABAE25BBBAC80099A13D /* Tiles */,
+				6C3BABA725BBBA040099A13D /* Scene Editor Files */,
 				6CE126D525BBB4F400C7DA3D /* Assets.xcassets */,
-				6CE126D725BBB4F400C7DA3D /* Info.plist */,
+				6CE1270B25BBB62200C7DA3D /* Scenes */,
+				6CE1270A25BBB61100C7DA3D /* Controller */,
+				6CE1270925BBB5E600C7DA3D /* UI */,
+				6CE1270525BBB5C700C7DA3D /* Template */,
 			);
 			path = "Super Indie Runner";
 			sourceTree = "<group>";
@@ -129,6 +167,40 @@
 				6CE126ED25BBB4F400C7DA3D /* Info.plist */,
 			);
 			path = "Super Indie RunnerUITests";
+			sourceTree = "<group>";
+		};
+		6CE1270525BBB5C700C7DA3D /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				6CE126D725BBB4F400C7DA3D /* Info.plist */,
+				6CE126C825BBB4F300C7DA3D /* AppDelegate.swift */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
+		6CE1270925BBB5E600C7DA3D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6CE126D225BBB4F300C7DA3D /* Main.storyboard */,
+				6C3BABB425BBBE240099A13D /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6CE1270A25BBB61100C7DA3D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6CE126D025BBB4F300C7DA3D /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6CE1270B25BBB62200C7DA3D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				6CE126CE25BBB4F300C7DA3D /* GameScene.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,10 +306,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C3BABB025BBBAE70099A13D /* TileSets.sks in Resources */,
 				6CE126D425BBB4F300C7DA3D /* Main.storyboard in Resources */,
-				6CE126CB25BBB4F300C7DA3D /* GameScene.sks in Resources */,
 				6CE126D625BBB4F400C7DA3D /* Assets.xcassets in Resources */,
-				6CE126CD25BBB4F300C7DA3D /* Actions.sks in Resources */,
+				6C3BABB525BBBE240099A13D /* LaunchScreen.storyboard in Resources */,
+				6C3BABAA25BBBA4A0099A13D /* Level_0-1.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CE126CF25BBB4F300C7DA3D /* GameScene.swift in Sources */,
+				6C3BABBE25BBBEB50099A13D /* SKNode+Extensions.swift in Sources */,
 				6CE126D125BBB4F300C7DA3D /* GameViewController.swift in Sources */,
 				6CE126C925BBB4F300C7DA3D /* AppDelegate.swift in Sources */,
 			);
@@ -433,7 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Super Indie Runner/Info.plist";
+				INFOPLIST_FILE = "Super Indie Runner/Template/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,7 +525,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Super Indie Runner/Info.plist";
+				INFOPLIST_FILE = "Super Indie Runner/Template/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
