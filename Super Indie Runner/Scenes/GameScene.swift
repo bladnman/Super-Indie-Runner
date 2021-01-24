@@ -12,7 +12,6 @@ enum GameState {
 }
 
 class GameScene: SKScene {
-  
   var worldLayer: Layer!
   var backgroundLayer: RepeatingLayer!
   var player: Player!
@@ -20,7 +19,8 @@ class GameScene: SKScene {
   var tileMap: SKNode!
   var touch: Bool = false
   var brake: Bool = false
-
+  var coins = 0
+  
   var lastTime: TimeInterval = 0
   var dt: TimeInterval = 0
   
@@ -29,8 +29,10 @@ class GameScene: SKScene {
       switch newValue {
       case .ongoing:
         player.state = .run
+        pauseEnemies(bool: false)
       case .finished:
         player.state = .idle
+        pauseEnemies(bool: true)
       case .ready:
         player.state = .idle
       default:
@@ -49,6 +51,10 @@ class GameScene: SKScene {
     physicsBody!.contactTestBitMask = GameConstants.PhysicsCategories.playerCategory
     
     createLayers()
+    
+    // make sure animations kick off (workaround)
+    self.isPaused = true
+    self.isPaused = false
   }
   
   func createLayers() {
@@ -76,7 +82,6 @@ class GameScene: SKScene {
     
     load(level: "Level_0-1")
   }
-
   func load(level: String) {
     if let levelNode = SKNode.unarchiveFromFile(file: level) {
       mapNode = levelNode
@@ -84,7 +89,6 @@ class GameScene: SKScene {
       loadTileMap()
     }
   }
-
   func loadTileMap() {
     if let groundTiles = mapNode.childNode(withName: GameConstants.StringConstants.groundTilesName) as? SKTileMapNode {
       tileMap = groundTiles
@@ -137,7 +141,6 @@ class GameScene: SKScene {
       }
     }
   }
-  
   func brakeDescend() {
     brake = true
     player.physicsBody!.velocity.dy = 0.0
@@ -146,6 +149,32 @@ class GameScene: SKScene {
   
   func handleEnemyContact() {
     die(reason: 0)
+  }
+  func pauseEnemies(bool: Bool) {
+    for enemy in tileMap[GameConstants.StringConstants.enemyName] {
+      enemy.isPaused = bool
+    }
+  }
+  func handleCollectible(sprite: SKSpriteNode) {
+    switch sprite.name! {
+    case GameConstants.StringConstants.coinName:
+      collectCoin(sprite: sprite)
+    default:
+      break
+    }
+  }
+  func collectCoin(sprite: SKSpriteNode) {
+    coins += 1
+    
+    if let coinDust = ParticleHelper.addParticleEffect(name: GameConstants.StringConstants.coinDustEmitterKey, particlePositionRange: CGVector(dx: 1.0, dy: 1.0), position: CGPoint.zero) {
+      coinDust.zPosition = GameConstants.ZPositions.objectZ
+      sprite.addChild(coinDust)
+      sprite.run(SKAction.fadeOut(withDuration: 0.4)) {
+        coinDust.removeFromParent()
+        sprite.removeFromParent()
+      }
+    }
+    print("Coins \(coins)")
   }
   
   func die(reason:Int) {
@@ -194,7 +223,6 @@ class GameScene: SKScene {
     touch = false
     player.turnGravity(on: true)
   }
-  
   override func update(_ currentTime: TimeInterval) {
     // if not the first time calling, calculate
     // the DELTA of time (dt)
@@ -209,7 +237,6 @@ class GameScene: SKScene {
       backgroundLayer.update(dt)
     }
   }
-  
   override func didSimulatePhysics() {
     for node in tileMap[GameConstants.StringConstants.groundNodeName] {
       if let groundNode = node as? GroundNode {
@@ -223,7 +250,6 @@ class GameScene: SKScene {
 
 
 extension GameScene: SKPhysicsContactDelegate {
-  
   func didBegin(_ contact: SKPhysicsContact) {
     let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
     switch contactMask {
@@ -240,8 +266,13 @@ extension GameScene: SKPhysicsContactDelegate {
     // ENEMY
     case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.enemyCategory:
       handleEnemyContact()
-      
-    // ENEMY
+
+    // COLLECTIBLE
+    case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.collectibleCategory:
+      let collectible = contact.bodyA.node?.name == player.name ? contact.bodyB.node as! SKSpriteNode : contact.bodyA.node as! SKSpriteNode
+      handleCollectible(sprite: collectible)
+
+    // FRAME
     case GameConstants.PhysicsCategories.playerCategory | GameConstants.PhysicsCategories.frameCategory:
       physicsBody = nil
       die(reason: 1)
