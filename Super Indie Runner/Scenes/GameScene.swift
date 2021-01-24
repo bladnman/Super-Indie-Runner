@@ -17,12 +17,6 @@ class GameScene: SKScene {
   var player: Player!
   var mapNode: SKNode!
   var tileMap: SKNode!
-  var touch: Bool = false
-  var brake: Bool = false
-  var coins = 0
-  
-  var lastTime: TimeInterval = 0
-  var dt: TimeInterval = 0
   
   var gameState: GameState = .ready {
     willSet {
@@ -40,6 +34,16 @@ class GameScene: SKScene {
       }
     }
   }
+  
+  var touch: Bool = false
+  var brake: Bool = false
+  var coins = 0
+  var superCoins = 0
+  
+  var lastTime: TimeInterval = 0
+  var dt: TimeInterval = 0
+  
+  var hudDelegate: HUDDelegate?
   
   override func didMove(to view: SKView) {
     physicsWorld.contactDelegate = self
@@ -102,6 +106,7 @@ class GameScene: SKScene {
     }
     
     addPlayer()
+    addHUD()
   }
   
   func addPlayer() {
@@ -145,6 +150,13 @@ class GameScene: SKScene {
     brake = true
     player.physicsBody!.velocity.dy = 0.0
     player.run(player.userData?.value(forKey: GameConstants.StringConstants.breakDescendActionKey) as! SKAction)
+    if let brakeSpark = ParticleHelper.addParticleEffect(name: GameConstants.StringConstants.brakeSparkEmitter, particlePositionRange: CGVector(dx: 30.0, dy: 30.0), position: CGPoint(x: player.position.x, y: player.position.y - player.size.height/2)) {
+      brakeSpark.zPosition = GameConstants.ZPositions.objectZ
+      addChild(brakeSpark)
+    }
+    player.run(player.userData?.value(forKey: GameConstants.StringConstants.breakDescendActionKey) as! SKAction) {
+      ParticleHelper.removeParticleEffect(name: GameConstants.StringConstants.brakeSparkEmitter, from: self)
+    }
   }
   
   func handleEnemyContact() {
@@ -157,14 +169,25 @@ class GameScene: SKScene {
   }
   func handleCollectible(sprite: SKSpriteNode) {
     switch sprite.name! {
-    case GameConstants.StringConstants.coinName:
+    case GameConstants.StringConstants.coinName,
+         _ where GameConstants.StringConstants.superCoinNames.contains(sprite.name!):
       collectCoin(sprite: sprite)
     default:
       break
     }
   }
   func collectCoin(sprite: SKSpriteNode) {
-    coins += 1
+    if GameConstants.StringConstants.superCoinNames.contains(sprite.name!) {
+      superCoins += 1
+      for index in 0..<3 {
+        if GameConstants.StringConstants.superCoinNames[index] == sprite.name! {
+          hudDelegate?.addSuperCoin(index: index)
+        }
+      }
+    } else {
+      coins += 1
+      hudDelegate?.updateCoinLabel(coins: coins)
+    }
     
     if let coinDust = ParticleHelper.addParticleEffect(name: GameConstants.StringConstants.coinDustEmitterKey, particlePositionRange: CGVector(dx: 1.0, dy: 1.0), position: CGPoint.zero) {
       coinDust.zPosition = GameConstants.ZPositions.objectZ
@@ -174,7 +197,14 @@ class GameScene: SKScene {
         sprite.removeFromParent()
       }
     }
-    print("Coins \(coins)")
+  }
+  
+  func addHUD() {
+    let hud = GameHUD(with: CGSize(width: frame.width, height: frame.height*0.1))
+    hud.position = CGPoint(x: frame.midX, y: frame.maxY - frame.height*0.05)
+    hud.zPosition = GameConstants.ZPositions.hudZ
+    hudDelegate = hud
+    addChild(hud)
   }
   
   func die(reason:Int) {

@@ -19,6 +19,11 @@
 		6C4CF4A025BD076C00A69718 /* ParticleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4CF49F25BD076C00A69718 /* ParticleHelper.swift */; };
 		6C4CF4A725BD08AC00A69718 /* CoinDustEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C4CF4A525BD08AC00A69718 /* CoinDustEmitter.sks */; };
 		6C4CF4A825BD08AC00A69718 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C4CF4A625BD08AC00A69718 /* Assets.xcassets */; };
+		6C595DFC25BDCB6F003B2EF1 /* BrakeSparkEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C595DFB25BDCB6F003B2EF1 /* BrakeSparkEmitter.sks */; };
+		6C595E0125BDD4C0003B2EF1 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C595E0025BDD4C0003B2EF1 /* MyActions.sks */; };
+		6C595E0A25BDD9D0003B2EF1 /* HUDDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E0925BDD9D0003B2EF1 /* HUDDelegate.swift */; };
+		6C595E0F25BDDB1C003B2EF1 /* GameHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E0E25BDDB1C003B2EF1 /* GameHUD.swift */; };
+		6C595E1625BDDB83003B2EF1 /* unanimous.inverted-brk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C595E1525BDDB83003B2EF1 /* unanimous.inverted-brk.ttf */; };
 		6C87DC5F25BC6F7700041BE4 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C87DC5E25BC6F7700041BE4 /* Layer.swift */; };
 		6C87DC6725BC79A800041BE4 /* RepeatingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C87DC6625BC79A800041BE4 /* RepeatingLayer.swift */; };
 		6CA5A1FE25BC842200DA3CA3 /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA5A1FD25BC842200DA3CA3 /* GameConstants.swift */; };
@@ -61,6 +66,11 @@
 		6C4CF49F25BD076C00A69718 /* ParticleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleHelper.swift; sourceTree = "<group>"; };
 		6C4CF4A525BD08AC00A69718 /* CoinDustEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDustEmitter.sks; sourceTree = "<group>"; };
 		6C4CF4A625BD08AC00A69718 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6C595DFB25BDCB6F003B2EF1 /* BrakeSparkEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrakeSparkEmitter.sks; sourceTree = "<group>"; };
+		6C595E0025BDD4C0003B2EF1 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyActions.sks; sourceTree = "<group>"; };
+		6C595E0925BDD9D0003B2EF1 /* HUDDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDDelegate.swift; sourceTree = "<group>"; };
+		6C595E0E25BDDB1C003B2EF1 /* GameHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHUD.swift; sourceTree = "<group>"; };
+		6C595E1525BDDB83003B2EF1 /* unanimous.inverted-brk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "unanimous.inverted-brk.ttf"; sourceTree = "<group>"; };
 		6C87DC5E25BC6F7700041BE4 /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		6C87DC6625BC79A800041BE4 /* RepeatingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingLayer.swift; sourceTree = "<group>"; };
 		6CA5A1FD25BC842200DA3CA3 /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
@@ -107,6 +117,7 @@
 		6C3BABA725BBBA040099A13D /* Scene Editor Files */ = {
 			isa = PBXGroup;
 			children = (
+				6C595E0025BDD4C0003B2EF1 /* MyActions.sks */,
 				6C3BABA825BBBA150099A13D /* Levels */,
 			);
 			path = "Scene Editor Files";
@@ -141,6 +152,7 @@
 			children = (
 				6C4CF48D25BC923900A69718 /* GroundNode.swift */,
 				6C4CF47925BC869D00A69718 /* Player.swift */,
+				6C595E0E25BDDB1C003B2EF1 /* GameHUD.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -161,8 +173,33 @@
 			children = (
 				6C4CF4A525BD08AC00A69718 /* CoinDustEmitter.sks */,
 				6C4CF4A625BD08AC00A69718 /* Assets.xcassets */,
+				6C595DFB25BDCB6F003B2EF1 /* BrakeSparkEmitter.sks */,
 			);
 			path = "Particle Emitters";
+			sourceTree = "<group>";
+		};
+		6C595E0825BDD9C0003B2EF1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6C595E0925BDD9D0003B2EF1 /* HUDDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6C595E1325BDDB5D003B2EF1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6C595E1425BDDB6A003B2EF1 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6C595E1425BDDB6A003B2EF1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6C595E1525BDDB83003B2EF1 /* unanimous.inverted-brk.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		6C87DC5D25BC6F6600041BE4 /* Layers */ = {
@@ -199,6 +236,8 @@
 		6CE126C725BBB4F300C7DA3D /* Super Indie Runner */ = {
 			isa = PBXGroup;
 			children = (
+				6C595E1325BDDB5D003B2EF1 /* Resources */,
+				6C595E0825BDD9C0003B2EF1 /* Protocols */,
 				6C4CF4A425BD087B00A69718 /* Particle Emitters */,
 				6C4CF48425BC89F100A69718 /* Helper Files */,
 				6C4CF47825BC864F00A69718 /* Custom Classes */,
@@ -373,8 +412,11 @@
 			files = (
 				6C3BABB025BBBAE70099A13D /* TileSets.sks in Resources */,
 				6CE126D425BBB4F300C7DA3D /* Main.storyboard in Resources */,
+				6C595E1625BDDB83003B2EF1 /* unanimous.inverted-brk.ttf in Resources */,
 				6CE126D625BBB4F400C7DA3D /* Assets.xcassets in Resources */,
 				6C3BABB525BBBE240099A13D /* LaunchScreen.storyboard in Resources */,
+				6C595E0125BDD4C0003B2EF1 /* MyActions.sks in Resources */,
+				6C595DFC25BDCB6F003B2EF1 /* BrakeSparkEmitter.sks in Resources */,
 				6C4CF4A825BD08AC00A69718 /* Assets.xcassets in Resources */,
 				6C3BABAA25BBBA4A0099A13D /* Level_0-1.sks in Resources */,
 				6C4CF4A725BD08AC00A69718 /* CoinDustEmitter.sks in Resources */,
@@ -404,7 +446,9 @@
 			files = (
 				6CE126CF25BBB4F300C7DA3D /* GameScene.swift in Sources */,
 				6C3BABBE25BBBEB50099A13D /* SKNode+Extensions.swift in Sources */,
+				6C595E0A25BDD9D0003B2EF1 /* HUDDelegate.swift in Sources */,
 				6C87DC5F25BC6F7700041BE4 /* Layer.swift in Sources */,
+				6C595E0F25BDDB1C003B2EF1 /* GameHUD.swift in Sources */,
 				6C4CF47A25BC869D00A69718 /* Player.swift in Sources */,
 				6C4CF49B25BCA73300A69718 /* ObjectHelper.swift in Sources */,
 				6CE126D125BBB4F300C7DA3D /* GameViewController.swift in Sources */,

@@ -30,6 +30,11 @@ struct GameConstants {
     static let coinRotateAtlas = "Coin Rotate Atlas"
     static let coinPrefixKey = "gold"
     static let coinDustEmitterKey = "CoinDustEmitter"
+    static let brakeSparkEmitter = "BrakeSparkEmitter"
+    
+    static let superCoinImageName = "SuperCoin"
+    static let superCoinNames = ["Super1", "Super2", "Super3"]
+    static let gameFontName = "Unanimous Inverted -BRK-"
 
     static let playerName = "Player"
     static let playerImageName = "Idle_0"
