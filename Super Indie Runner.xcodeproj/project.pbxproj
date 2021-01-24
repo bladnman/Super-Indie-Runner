@@ -24,6 +24,12 @@
 		6C595E0A25BDD9D0003B2EF1 /* HUDDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E0925BDD9D0003B2EF1 /* HUDDelegate.swift */; };
 		6C595E0F25BDDB1C003B2EF1 /* GameHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E0E25BDDB1C003B2EF1 /* GameHUD.swift */; };
 		6C595E1625BDDB83003B2EF1 /* unanimous.inverted-brk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C595E1525BDDB83003B2EF1 /* unanimous.inverted-brk.ttf */; };
+		6C595E1B25BDF642003B2EF1 /* PopupNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E1A25BDF642003B2EF1 /* PopupNode.swift */; };
+		6C595E2025BDF673003B2EF1 /* ScorePopupNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E1F25BDF673003B2EF1 /* ScorePopupNode.swift */; };
+		6C595E2825BDF6A3003B2EF1 /* BannerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E2725BDF6A3003B2EF1 /* BannerLabel.swift */; };
+		6C595E2D25BDF6C9003B2EF1 /* PopupButtonHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E2C25BDF6C9003B2EF1 /* PopupButtonHandlerDelegate.swift */; };
+		6C595E3225BDF726003B2EF1 /* SpriteKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E3125BDF725003B2EF1 /* SpriteKitButton.swift */; };
+		6C595E3725BDFF9D003B2EF1 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C595E3625BDFF9D003B2EF1 /* ScoreManager.swift */; };
 		6C87DC5F25BC6F7700041BE4 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C87DC5E25BC6F7700041BE4 /* Layer.swift */; };
 		6C87DC6725BC79A800041BE4 /* RepeatingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C87DC6625BC79A800041BE4 /* RepeatingLayer.swift */; };
 		6CA5A1FE25BC842200DA3CA3 /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA5A1FD25BC842200DA3CA3 /* GameConstants.swift */; };
@@ -71,6 +77,12 @@
 		6C595E0925BDD9D0003B2EF1 /* HUDDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDDelegate.swift; sourceTree = "<group>"; };
 		6C595E0E25BDDB1C003B2EF1 /* GameHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHUD.swift; sourceTree = "<group>"; };
 		6C595E1525BDDB83003B2EF1 /* unanimous.inverted-brk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "unanimous.inverted-brk.ttf"; sourceTree = "<group>"; };
+		6C595E1A25BDF642003B2EF1 /* PopupNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupNode.swift; sourceTree = "<group>"; };
+		6C595E1F25BDF673003B2EF1 /* ScorePopupNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePopupNode.swift; sourceTree = "<group>"; };
+		6C595E2725BDF6A3003B2EF1 /* BannerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerLabel.swift; sourceTree = "<group>"; };
+		6C595E2C25BDF6C9003B2EF1 /* PopupButtonHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupButtonHandlerDelegate.swift; sourceTree = "<group>"; };
+		6C595E3125BDF725003B2EF1 /* SpriteKitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitButton.swift; sourceTree = "<group>"; };
+		6C595E3625BDFF9D003B2EF1 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		6C87DC5E25BC6F7700041BE4 /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		6C87DC6625BC79A800041BE4 /* RepeatingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingLayer.swift; sourceTree = "<group>"; };
 		6CA5A1FD25BC842200DA3CA3 /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
@@ -153,6 +165,10 @@
 				6C4CF48D25BC923900A69718 /* GroundNode.swift */,
 				6C4CF47925BC869D00A69718 /* Player.swift */,
 				6C595E0E25BDDB1C003B2EF1 /* GameHUD.swift */,
+				6C595E1F25BDF673003B2EF1 /* ScorePopupNode.swift */,
+				6C595E1A25BDF642003B2EF1 /* PopupNode.swift */,
+				6C595E2725BDF6A3003B2EF1 /* BannerLabel.swift */,
+				6C595E3125BDF725003B2EF1 /* SpriteKitButton.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -164,6 +180,7 @@
 				6C4CF49225BC9B9E00A69718 /* AnimationHelper.swift */,
 				6C4CF49A25BCA73300A69718 /* ObjectHelper.swift */,
 				6C4CF49F25BD076C00A69718 /* ParticleHelper.swift */,
+				6C595E3625BDFF9D003B2EF1 /* ScoreManager.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -182,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				6C595E0925BDD9D0003B2EF1 /* HUDDelegate.swift */,
+				6C595E2C25BDF6C9003B2EF1 /* PopupButtonHandlerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -445,19 +463,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CE126CF25BBB4F300C7DA3D /* GameScene.swift in Sources */,
+				6C595E2025BDF673003B2EF1 /* ScorePopupNode.swift in Sources */,
 				6C3BABBE25BBBEB50099A13D /* SKNode+Extensions.swift in Sources */,
 				6C595E0A25BDD9D0003B2EF1 /* HUDDelegate.swift in Sources */,
 				6C87DC5F25BC6F7700041BE4 /* Layer.swift in Sources */,
+				6C595E1B25BDF642003B2EF1 /* PopupNode.swift in Sources */,
+				6C595E3725BDFF9D003B2EF1 /* ScoreManager.swift in Sources */,
 				6C595E0F25BDDB1C003B2EF1 /* GameHUD.swift in Sources */,
 				6C4CF47A25BC869D00A69718 /* Player.swift in Sources */,
+				6C595E2D25BDF6C9003B2EF1 /* PopupButtonHandlerDelegate.swift in Sources */,
 				6C4CF49B25BCA73300A69718 /* ObjectHelper.swift in Sources */,
 				6CE126D125BBB4F300C7DA3D /* GameViewController.swift in Sources */,
 				6CA5A1FE25BC842200DA3CA3 /* GameConstants.swift in Sources */,
 				6C4CF4A025BD076C00A69718 /* ParticleHelper.swift in Sources */,
 				6C4CF49325BC9B9E00A69718 /* AnimationHelper.swift in Sources */,
 				6CE126C925BBB4F300C7DA3D /* AppDelegate.swift in Sources */,
+				6C595E3225BDF726003B2EF1 /* SpriteKitButton.swift in Sources */,
 				6C87DC6725BC79A800041BE4 /* RepeatingLayer.swift in Sources */,
 				6C4CF48E25BC923900A69718 /* GroundNode.swift in Sources */,
+				6C595E2825BDF6A3003B2EF1 /* BannerLabel.swift in Sources */,
 				6C4CF48625BC8A0D00A69718 /* PhysicsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -48,6 +48,28 @@ struct GameConstants {
     static let diePrefixKey = "Die_"
     static let jumpUpActionKey = "JumpUp"
     static let breakDescendActionKey = "BrakeDescend"
+    
+    // BUTTONS
+    
+    static let retryButton = "RetryButton"
+    static let playButton = "PlayButton"
+    static let pauseButton = "PauseButton"
+    static let menuButton = "MenuButton"
+    static let emptyButton = "EmptyButton"
+    static let cancelButton = "CancelButton"
+    static let fullStarName = "StarFull"
+    static let emptyStarName = "StarEmpty"
+    static let largePopup = "PopupSmall"
+    static let smallPopup = "PopupLarge"
+    static let bannerName = "Banner"
+    static let popupButtonNames = [menuButton, playButton, retryButton, cancelButton]
+    
+    static let scoreScoreKey = "score"
+    static let scoreCoinsKey = "coins"
+    static let scoreStarsKey = "stars"
+
+
+    
   }
 
   enum PhysicsCategories {
