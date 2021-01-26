@@ -19,6 +19,7 @@ struct GameConstants {
   }
 
   enum StringConstants {
+    static let gameName = "SUPER INDIE RUN"
     static let groundTilesName = "Ground Tiles"
     static let worldBackgroundNames = ["DessertBackground", "GrassBackground"]
     static let groundNodeName = "GroundNode"
@@ -67,6 +68,11 @@ struct GameConstants {
     static let scoreScoreKey = "score"
     static let scoreCoinsKey = "coins"
     static let scoreStarsKey = "stars"
+    
+    static let pauseKey = "Paused"
+    static let completedKey = "Completed"
+    static let failedKey = "Failed"
+
 
 
     

@@ -19,6 +19,19 @@ class ScorePopupNode: PopupNode {
     self.score = ScoreManager.getCurrentScore(for: level)
     
     super.init(withTitle: title, and: texture, buttonHandlerDelegate: buttonHandlerDelegate)
+    
+    addScoreLabel()
+    addStars()
+    addCoins(count: coins)
+    
+    if animated {
+      animateResult(with: CGFloat(score), and: 100.0)
+    } else {
+      scoreLabel.text = "\(score)"
+      for i in 0..<self.score[GameConstants.StringConstants.scoreStarsKey]! {
+        self[GameConstants.StringConstants.fullStarName + "_\(i)"].first!.alpha = 1.0
+      }
+    }
   }
   
   func addScoreLabel() {
@@ -50,16 +63,54 @@ class ScorePopupNode: PopupNode {
       star.zPosition = empty.zPosition
       star.name = GameConstants.StringConstants.fullStarName + "_\(i)"
       star.alpha = 0.0
+      
+      addChild(empty)
+      addChild(star)
     }
   }
   func addCoins(count: Int) {
-    // video 75
+    let numberOfCoins = count == 4 ? score[GameConstants.StringConstants.scoreScoreKey]! : count
+    let coin = SKSpriteNode(imageNamed: GameConstants.StringConstants.superCoinImageName)
+    coin.scale(to: size, width: false, multiplier: 0.15)
+    coin.position = CGPoint(x: -coin.size.width/1.5, y: frame.maxY - size.height*0.75)
+    coin.zPosition = GameConstants.ZPositions.hudZ
+    addChild(coin)
+
+    let coinLabel = SKLabelNode(fontNamed: GameConstants.StringConstants.gameFontName)
+    coinLabel.verticalAlignmentMode = .center
+    coinLabel.fontSize = 200.0
+    coinLabel.text = "\(numberOfCoins)/3"
+    coinLabel.scale(to: coin.size, width: false, multiplier: 1.0)
+    coinLabel.position = CGPoint(x: coin.size.width/1.5, y: frame.maxY - size.height*0.75)
+    coinLabel.zPosition = GameConstants.ZPositions.hudZ
+    addChild(coinLabel)
   }
   func animateResult(with achievedScore: CGFloat, and maxScore: CGFloat) {
-    
+    var counter = 0
+    let wait = SKAction.wait(forDuration: 0.05)
+    let count = SKAction.run {
+      counter += 1
+      self.scoreLabel.text = String(counter)
+      if CGFloat(counter)/maxScore == 0.8 {
+        self.animateStar(number: 2)
+      } else if CGFloat(counter)/maxScore == 0.4 {
+        self.animateStar(number: 1)
+      } else if counter == 1 {
+        self.animateStar(number: 0)
+      }
+    }
+    let sequence = SKAction.sequence([wait, count])
+    self.run(SKAction.repeat(sequence, count: Int(achievedScore)))
   }
   func animateStar(number: Int) {
-    
+    let star = self[GameConstants.StringConstants.fullStarName + "_\(number)"].first!
+    print(star)
+    let fadeIn = SKAction.fadeIn(withDuration: 0.1)
+    let scaleUp = SKAction.scale(to: 1.2, duration: 0.2)
+    let scaleDown = SKAction.scale(to: 1.0, duration: 0.1)
+//    star.run(SKAction.group([fadeIn, scaleUp, scaleDown]))
+    let begin = SKAction.group([fadeIn, scaleUp])
+    star.run(SKAction.sequence([begin, scaleDown]))
   }
   
   required init?(coder aDecoder: NSCoder) {
