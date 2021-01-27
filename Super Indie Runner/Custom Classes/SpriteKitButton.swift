@@ -16,6 +16,7 @@ class SpriteKitButton: SKSpriteNode {
   var defaultButtton: SKSpriteNode
   var action: (Int) -> ()
   var index: Int
+  let soundPlayer = SoundPlayer()
   
   private var state: SpriteKitButtonState = .up {
     willSet {
@@ -46,6 +47,7 @@ class SpriteKitButton: SKSpriteNode {
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     state = .down
+    run(soundPlayer.buttonSound)
   }
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     let touch: UITouch = touches.first! as UITouch
