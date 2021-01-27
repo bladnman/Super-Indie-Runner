@@ -13,8 +13,10 @@ class ObjectHelper {
     // FINISH LINE
     // ENEMY
     // SUPER COINS
+    // POWER UP
     case GameConstants.StringConstants.finishLineName,
          GameConstants.StringConstants.enemyName,
+         GameConstants.StringConstants.powerupName,
          _ where GameConstants.StringConstants.superCoinNames.contains(name):
       PhysicsHelper.addPhysicsBody(to: sprite, with: name)
       

@@ -32,6 +32,7 @@ class PhysicsHelper {
     // COINS
     // SUPER COINS
     case GameConstants.StringConstants.coinName,
+         GameConstants.StringConstants.powerupName,
          _ where GameConstants.StringConstants.superCoinNames.contains(name):
       sprite.physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.width/2)
       sprite.physicsBody!.categoryBitMask = GameConstants.PhysicsCategories.collectibleCategory

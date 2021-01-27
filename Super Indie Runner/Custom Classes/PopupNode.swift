@@ -24,10 +24,9 @@ class PopupNode: SKSpriteNode {
   }
   
   func add(buttons: [Int]) {
-    
     let scalar = 1.0/CGFloat(buttons.count-1)
     for (index, button) in buttons.enumerated() {
-      let imageName = GameConstants.StringConstants.popupButtonNames[index]
+      let imageName = GameConstants.StringConstants.popupButtonNames[button]
       let buttonToAdd = SpriteKitButton(defaultButtonImage: imageName, action: buttonHandlerDelegate.popupButtonHandler, index: button)
       let x = -frame.maxX/2 + CGFloat(index) * scalar * (frame.size.width*0.5)
       buttonToAdd.position = CGPoint(x: x, y: frame.minY)

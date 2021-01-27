@@ -25,6 +25,8 @@ struct GameConstants {
     static let groundNodeName = "GroundNode"
     static let finishLineName = "FinishLine"
     static let enemyName = "Enemy"
+    static let menuBackground = "MenuBackground"
+    static let foregroundLayer = "ForegroundLayer"
 
     static let coinName = "Coin"
     static let coinImageName = "gold0"
@@ -32,7 +34,8 @@ struct GameConstants {
     static let coinPrefixKey = "gold"
     static let coinDustEmitterKey = "CoinDustEmitter"
     static let brakeSparkEmitter = "BrakeSparkEmitter"
-    
+    static let powerupEmitterKey = "PowerupEmitter"
+
     static let superCoinImageName = "SuperCoin"
     static let superCoinNames = ["Super1", "Super2", "Super3"]
     static let gameFontName = "Unanimous Inverted -BRK-"
@@ -64,6 +67,7 @@ struct GameConstants {
     static let smallPopup = "PopupLarge"
     static let bannerName = "Banner"
     static let popupButtonNames = [menuButton, playButton, retryButton, cancelButton]
+    static let powerupName = "Powerup"
     
     static let scoreScoreKey = "score"
     static let scoreCoinsKey = "coins"
@@ -73,7 +77,7 @@ struct GameConstants {
     static let completedKey = "Completed"
     static let failedKey = "Failed"
 
-
+    
 
     
   }

@@ -18,6 +18,7 @@ class GameScene: SKScene {
   var mapNode: SKNode!
   var tileMap: SKNode!
   var popup: PopupNode?
+  var soundPlayer = SoundPlayer()
   
   var gameState: GameState = .ready {
     willSet {
@@ -176,6 +177,7 @@ class GameScene: SKScene {
   }
   
   func handleEnemyContact() {
+    if player.invincible { return }
     die(reason: 0)
   }
   func pauseEnemies(bool: Bool) {
@@ -188,6 +190,10 @@ class GameScene: SKScene {
     case GameConstants.StringConstants.coinName,
          _ where GameConstants.StringConstants.superCoinNames.contains(sprite.name!):
       collectCoin(sprite: sprite)
+      run(soundPlayer.coinSound)
+    case GameConstants.StringConstants.powerupName:
+      player.activatePowerup(active: true)
+      run(soundPlayer.powerupSound)
     default:
       break
     }
@@ -251,6 +257,7 @@ class GameScene: SKScene {
   func die(reason:Int) {
     gameState = .finished
     player.turnGravity(on: false)
+    run(soundPlayer.deathSound)
     let deathAnimation:SKAction!
     switch reason {
     case 0:
@@ -272,6 +279,7 @@ class GameScene: SKScene {
     }
   }
   func finishGame() {
+    run(soundPlayer.completedSound)
     gameState = .finished
     var stars = 0
     let percentage = CGFloat(coins)/100.0
@@ -289,6 +297,13 @@ class GameScene: SKScene {
     ]
     ScoreManager.compare(scores: [scores], in: levelKey) // will save high scores
     createAndShowPopup(type: 1, title: GameConstants.StringConstants.completedKey)
+    
+    // unlock next level (if we had one)
+    if level < 9 {
+      let nextLevelKey = "Level_\(world)-\(level+1)"
+      UserDefaults.standard.set(true, forKey: nextLevelKey)
+      UserDefaults.standard.synchronize()
+    }
     
   }
   
